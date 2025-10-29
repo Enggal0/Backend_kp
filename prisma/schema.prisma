@@ -1,0 +1,314 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  // seed     = "prisma/seed.js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model School {
+  id             String   @id @default(uuid())
+  npsn           String   @db.VarChar(100)
+  nama           String   @db.VarChar(100)
+  jenjang        String   @db.VarChar(100)
+  alamat         String   @db.Text
+  provinsi       String   @default("DI YOGYAKARTA") @db.VarChar(100)
+  kabupaten_kota String   @default("KABUPATEN SLEMAN") @db.VarChar(100)
+  kecamatan      String   @db.VarChar(100)
+  kelurahan      String   @db.VarChar(100)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  user           User[]
+  staff          Staff[]
+
+  @@map("schools")
+}
+
+model User {
+  id                 String             @id @default(uuid())
+  nama               String             @db.VarChar(100)
+  nipm               String             @unique @db.VarChar(18)
+  status_kepegawaian Status_Kepegawaian
+  email              String?            @unique @db.VarChar(100)
+  password           String             @db.VarChar(100)
+  role               Role               @default(USER)
+  token              String?            @db.Text
+  img_url            String?            @db.Text
+  unit_kerja_id      String
+  unit_kerja         School             @relation(fields: [unit_kerja_id], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  createdAt          DateTime           @default(now())
+  updatedAt          DateTime           @updatedAt
+  profile            Profile?
+  positions          Position[]
+  educations         Education[]
+  trainings          Training[]
+  titles             Title[]
+  families           Family[]
+  achievements       Achievement[]
+  documents          Document[]
+  performances       Performance[]
+  staff              Staff[]
+
+  @@map("users")
+}
+
+model Staff {
+  id                 String             @id @default(uuid())
+  nama               String             @db.VarChar(100)
+  nipm               String             @unique @db.VarChar(18)
+  status_kepegawaian Status_Kepegawaian
+  email              String?            @unique @db.VarChar(100)
+  img_url            String?            @db.Text
+  unit_kerja_id      String
+  unit_kerja         School             @relation(fields: [unit_kerja_id], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  createdAt          DateTime           @default(now())
+  updatedAt          DateTime           @updatedAt
+  createdByUserId    String
+  createdByUser      User               @relation(fields: [createdByUserId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+
+  @@map("staff")
+}
+
+enum Role {
+  ADMIN @map("admin")
+  USER  @map("user")
+}
+
+model Profile {
+  id             String    @id @default(uuid())
+  gelar_depan    String?   @db.VarChar(100)
+  gelar_belakang String?   @db.VarChar(100)
+  tempat_lahir   String?   @db.VarChar(100)
+  tanggal_lahir  String?   @db.VarChar(100)
+  jenis_kelamin  Gender?
+  agama          Religion?
+  golongan_darah Blood?
+  nomor_telepon  String?   @db.VarChar(100)
+  alamat         String?   @db.Text
+  provinsi       String?   @db.VarChar(100)
+  kabupaten_kota String?   @db.VarChar(100)
+  kecamatan      String?   @db.VarChar(100)
+  kelurahan      String?   @db.VarChar(100)
+  user_id        String    @unique
+  user           User      @relation(fields: [user_id], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  @@map("profiles")
+}
+
+model Position {
+  id                String   @id @default(uuid())
+  no_sk             String   @db.VarChar(100)
+  tanggal_sk        DateTime @db.Date
+  tmt               DateTime @db.Date
+  jenis_sk          String   @db.VarChar(100)
+  gaji_pokok        Int
+  file_url          String   @db.Text
+  status_verifikasi Status   @default(pending)
+  alasan_ditolak    String?  @db.VarChar(100)
+  user_id           String
+  user              User     @relation(fields: [user_id], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@map("positions")
+}
+
+model Education {
+  id                String   @id @default(uuid())
+  jenjang           String   @db.VarChar(100)
+  nama              String   @db.VarChar(100)
+  jurusan           String   @db.VarChar(100)
+  tahun_lulus       Int      @db.Year
+  file_url          String   @db.Text
+  status_verifikasi Status   @default(pending)
+  alasan_ditolak    String?  @db.VarChar(100)
+  user_id           String
+  user              User     @relation(fields: [user_id], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@map("educations")
+}
+
+model Training {
+  id                String   @id @default(uuid())
+  nama              String   @db.VarChar(100)
+  penyelenggara     String   @db.VarChar(100)
+  jpl               Int
+  tahun_kegiatan    Int      @db.Year
+  file_url          String   @db.Text
+  status_verifikasi Status   @default(pending)
+  alasan_ditolak    String?  @db.VarChar(100)
+  user_id           String
+  user              User     @relation(fields: [user_id], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@map("trainings")
+}
+
+model Title {
+  id                String   @id @default(uuid())
+  jabatan           String   @db.VarChar(100)
+  unit_kerja        String   @db.VarChar(100)
+  tmt               DateTime @db.Date
+  tanggal_berakhir  DateTime @db.Date
+  no_sk             String   @db.VarChar(100)
+  tanggal_sk        DateTime @db.Date
+  file_url          String   @db.Text
+  status_verifikasi Status   @default(pending)
+  alasan_ditolak    String?  @db.VarChar(100)
+  user_id           String
+  user              User     @relation(fields: [user_id], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@map("titles")
+}
+
+model Family {
+  id                String       @id @default(uuid())
+  nik               String       @db.VarChar(16)
+  nama              String       @db.VarChar(100)
+  tempat            String       @db.VarChar(100)
+  tanggal_lahir     DateTime     @db.Date
+  jenis_kelamin     Gender
+  agama             Religion
+  file_url          String       @db.Text
+  hubungan_kel      Relationship
+  status_verifikasi Status       @default(pending)
+  alasan_ditolak    String?      @db.VarChar(100)
+  user_id           String
+  user              User         @relation(fields: [user_id], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  createdAt         DateTime     @default(now())
+  updatedAt         DateTime     @updatedAt
+
+  @@map("families")
+}
+
+model Achievement {
+  id                String   @id @default(uuid())
+  nama              String   @db.VarChar(100)
+  tingkat           String   @db.VarChar(100)
+  tahun             Int      @db.Year
+  penyelenggara     String   @db.VarChar(100)
+  file_url          String   @db.Text
+  status_verifikasi Status   @default(pending)
+  alasan_ditolak    String?  @db.VarChar(100)
+  user_id           String
+  user              User     @relation(fields: [user_id], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@map("achievements")
+}
+
+model Performance {
+  id                String   @id @default(uuid())
+  nilai_kerja       Int
+  predikat          Predikat
+  tahun             Int      @db.Year
+  file_url          String   @db.Text
+  status_verifikasi Status   @default(pending)
+  alasan_ditolak    String?  @db.VarChar(100)
+  user_id           String
+  user              User     @relation(fields: [user_id], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@map("performances")
+}
+
+model Document {
+  id                String   @id @default(uuid())
+  jenis_dokumen     Dokumen
+  no_dokumen        String   @db.VarChar(100)
+  file_url          String   @db.Text
+  status_verifikasi Status   @default(pending)
+  alasan_ditolak    String?  @db.VarChar(100)
+  user_id           String
+  user              User     @relation(fields: [user_id], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@map("documents")
+}
+
+enum Predikat {
+  A
+  AB
+  B
+  BC
+  C
+  D
+  E
+}
+
+enum Status {
+  accepted @map("Diterima")
+  rejected @map("Ditolak")
+  pending  @map("Menunggu")
+}
+
+enum Relationship {
+  Anak
+  Istri
+  Suami
+}
+
+enum Gender {
+  Laki_Laki @map("Laki-Laki")
+  Perempuan @map("Perempuan")
+}
+
+enum Religion {
+  Islam
+  Kristen
+  Katolik
+  Hindu
+  Buddha
+  Konghucu
+}
+
+enum Blood {
+  A
+  B
+  O
+  AB
+}
+
+enum Sekolah {
+  SD
+  SMP
+  SMA
+  D1
+  D2
+  D3
+  D4
+  S1
+  S2
+  S3
+}
+
+enum Dokumen {
+  KTP
+  NBM
+  PASPOR @map("Paspor")
+  KK     @map("Kartu Keluarga")
+  NUPTK
+  NPWP
+  BPJS
+}
+
+enum Status_Kepegawaian {
+  Tidak_Tetap @map("Pegawai Tidak Tetap")
+  Tetap       @map("Pegawai Tetap")
+  Kontrak     @map("Pegawai Kontrak")
+}

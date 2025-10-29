@@ -1,0 +1,13 @@
+# Ignore node_modules directory
+node_modules
+
+# Keep environment variables out of version control
+.env
+
+# Ignore all files in the uploads directories
+src/uploads/files/*
+src/uploads/images/*
+
+# except files and images directories
+!src/uploads/files/.gitkeep
+!src/uploads/images/.gitkeep
