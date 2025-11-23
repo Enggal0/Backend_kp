@@ -17,6 +17,27 @@ import {
   uploadImage,
   deleteFile,
 } from '../utils/upload-file.js';
+import prisma from '../config/database.js';
+
+const getAllTahunJabatan = async () => {
+  // TahunJabatan table removed — return a computed list of recent masa jabatan
+  const now = new Date();
+  const year = now.getFullYear();
+  const list = [];
+  // provide the last two masa jabatan ranges (Jul..Jun)
+  for (let i = 0; i < 2; i++) {
+    const start = new Date(`${year - i - 1}-07-01`);
+    const end = new Date(`${year - i}-06-30`);
+    list.push({
+      id: `${start.getFullYear()}_${end.getFullYear()}`,
+      nama: `${start.getFullYear()}/${end.getFullYear()}`,
+      mulai: start,
+      selesai: end,
+      aktif: i === 0 ? true : false,
+    });
+  }
+  return list;
+};
 
 const getAllStaff = async (userData, currentUserId) => {
   const searchValidation = await validate(filterStaffValidation, userData);
@@ -35,6 +56,14 @@ const getStaffById = async (id, currentUserId) => {
 
 const createNewStaff = async (staffData, currentUserId) => {
   const staffValidation = await validate(createStaffValidation, staffData);
+  const user = await prisma.user.findUnique({
+    where: {
+      id: currentUserId,
+    },
+  });
+  if (user.role === 'SCHOOL_ADMIN') {
+    staffValidation.unit_kerja_id = user.unit_kerja_id;
+  }
 
   let uploadedImg = null;
   if (staffData.img_url) {
@@ -98,4 +127,5 @@ export {
   createNewStaff,
   updateStaffMember,
   deleteStaffMember,
+  getAllTahunJabatan,
 };

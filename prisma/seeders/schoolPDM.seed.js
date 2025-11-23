@@ -46,17 +46,24 @@ const generateSchools = async () => {
 };
 
 const seedSchools = async () => {
-  const schools = await generateSchools();
-  schools.forEach(async (school) => {
-    try {
-      await prisma.school.create({
-        data: school,
-      });
-      console.log(`school "${school.nama}" berhasil ditambahkan.`);
-    } catch (error) {
-      console.error(`Gagal menambahkan school: ${error.message}`);
-    }
-  });
+  try {
+    const schools = await generateSchools();
+    await Promise.all(
+      schools.map(async (school) => {
+        try {
+          await prisma.school.create({
+            data: school,
+          });
+          console.log(`  ✓ Sekolah "${school.nama}" ditambahkan`);
+        } catch (error) {
+          console.error(`  ✗ Gagal menambahkan sekolah "${school.nama}": ${error.message}`);
+        }
+      }),
+    );
+    console.log(`✓ Total ${schools.length} sekolah dari DataSekolah berhasil ditambahkan`);
+  } catch (error) {
+    console.error(`✗ Error dalam seedSchools: ${error.message}`);
+  }
 };
 
 export default seedSchools;

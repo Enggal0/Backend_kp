@@ -5,6 +5,7 @@ import {
   getStaffById,
   updateStaffMember,
   deleteStaffMember,
+  getAllTahunJabatan,
 } from './staff.service.js';
 import { imageUpload, multerErrorHandler } from '../middleware/upload-file-middleware.js';
 import { roleMiddleware, authMiddleware } from '../middleware/authentication.middleware.js';
@@ -85,6 +86,16 @@ router.delete('/staff/:id', roleMiddleware('USER'), async (req, res, next) => {
       error: false,
       message: 'Staff deleted successfully',
     });
+  } catch (error) {
+    next(error);
+  }
+});
+
+// Return list of Tahun Jabatan (masa jabatan)
+router.get('/tahun-jabatan', roleMiddleware(['SUPER_ADMIN', 'SCHOOL_ADMIN', 'EXECUTIVE', 'USER']), async (req, res, next) => {
+  try {
+    const tahun = await getAllTahunJabatan();
+    res.status(200).json({ error: false, data: tahun });
   } catch (error) {
     next(error);
   }

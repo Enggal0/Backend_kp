@@ -9,6 +9,10 @@ const registerValidation = Joi.object({
   status_kepegawaian: Joi.string().valid('Tetap', 'Kontrak', 'Tidak_Tetap').required(),
   unit_kerja_id: Joi.string().required(),
   password: Joi.string().min(8).message('Password at least 8 characters').required(),
+  jenis_jabatan: Joi.string().valid('KEPALA_SEKOLAH','WAKIL_KEPALA_SEKOLAH','BENDAHARA','GURU','STAF','LAINNYA').optional(),
+  tahun_jabatan_mulai: Joi.date().optional(),
+  tahun_jabatan_selesai: Joi.date().optional(),
+  createdByUserId: Joi.string().optional(),
 });
 
 const loginValidation = Joi.object({
@@ -26,6 +30,8 @@ const filterValidation = Joi.object({
   nipm: Joi.string().optional(),
   unit_kerja: Joi.string().optional(),
   nama: Joi.string().optional(),
+  userRole: Joi.string().optional(),
+  userUnitKerjaId: Joi.string().optional(),
 });
 
 const upadateByUserValidation = Joi.object({

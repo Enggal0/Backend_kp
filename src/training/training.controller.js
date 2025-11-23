@@ -12,7 +12,7 @@ const router = express.Router();
 
 // admin role
 
-router.get('/trainings/:userId', roleMiddleware('ADMIN'), async (req, res, next) => {
+router.get('/trainings/:userId', roleMiddleware(['SUPER_ADMIN', 'SCHOOL_ADMIN', 'EXECUTIVE']), async (req, res, next) => {
   try {
     const id = req.params.userId;
     const trainings = await getAllTrainings(id);
@@ -26,7 +26,7 @@ router.get('/trainings/:userId', roleMiddleware('ADMIN'), async (req, res, next)
   }
 });
 
-router.get('/trainings/:userId/:id', roleMiddleware('ADMIN'), async (req, res, next) => {
+router.get('/trainings/:userId/:id', roleMiddleware(['SUPER_ADMIN', 'SCHOOL_ADMIN', 'EXECUTIVE']), async (req, res, next) => {
   try {
     const id = req.params.userId;
     const trainingId = req.params.id;
@@ -41,12 +41,14 @@ router.get('/trainings/:userId/:id', roleMiddleware('ADMIN'), async (req, res, n
   }
 });
 
-router.patch('/trainings/:userId/:id', roleMiddleware('ADMIN'), async (req, res, next) => {
+router.patch('/trainings/:userId/:id', roleMiddleware(['SUPER_ADMIN', 'SCHOOL_ADMIN']), async (req, res, next) => {
   try {
-    const id = req.params.userId;
-    const trainingById = req.params.id;
+    const userId = req.params.userId;  // User being reviewed
+    const trainingId = req.params.id;
     const trainingData = req.body;
-    const trainings = await verifTraining(trainingById, trainingData, id);
+    const adminUser = req.user;  // Current admin performing verification
+
+    const trainings = await verifTraining(trainingId, trainingData, userId, adminUser);
     res.status(200).json({
       error: false,
       message: 'Verified Success',

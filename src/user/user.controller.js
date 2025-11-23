@@ -51,7 +51,10 @@ router.post('/login', async (req, res, next) => {
 
 router.use(authMiddleware);
 
-router.get('/users/dashboard', roleMiddleware('USER'), async (req, res, next) => {
+const ALL_ROLES = ['USER', 'SCHOOL_ADMIN', 'SUPER_ADMIN', 'EXECUTIVE'];
+const ADMIN_ROLES = ['SUPER_ADMIN', 'SCHOOL_ADMIN'];
+
+router.get('/users/dashboard', roleMiddleware(ALL_ROLES), async (req, res, next) => {
   try {
     const { nipm } = req.user;
     const user = await getUserDashboard(nipm);
@@ -90,7 +93,7 @@ router.get('/users/navbar', async (req, res, next) => {
   }
 });
 
-router.get('/users/profile/:id', roleMiddleware('USER'), async (req, res, next) => {
+router.get('/users/profile/:id', roleMiddleware(ALL_ROLES), async (req, res, next) => {
   try {
     const userId = req.params.id;
     const user = await getUserById(userId);
@@ -130,7 +133,7 @@ router.delete('/logout', async (req, res, next) => {
   }
 });
 
-router.patch('/users', imageUpload, roleMiddleware('USER'), multerErrorHandler, async (req, res, next) => {
+router.patch('/users', imageUpload, roleMiddleware(ALL_ROLES), multerErrorHandler, async (req, res, next) => {
   try {
     const { id } = req.user;
     const userId = await getUserById(id);
@@ -152,7 +155,7 @@ router.patch('/users', imageUpload, roleMiddleware('USER'), multerErrorHandler, 
 
 // admin routers
 
-router.get('/users', roleMiddleware('ADMIN'), async (req, res, next) => {
+router.get('/users', roleMiddleware(['SUPER_ADMIN', 'SCHOOL_ADMIN', 'EXECUTIVE']), async (req, res, next) => {
   try {
     const userData = {
       status_kepegawaian: req.query.status_kepegawaian,
@@ -162,6 +165,8 @@ router.get('/users', roleMiddleware('ADMIN'), async (req, res, next) => {
       unit_kerja: req.query.unit_kerja,
       nipm: req.query.nipm,
       size: req.query.size,
+      userRole: req.user.role,
+      userUnitKerjaId: req.user.unit_kerja_id,
     };
     const users = await getAllUsers(userData);
     console.log(users);
@@ -171,7 +176,25 @@ router.get('/users', roleMiddleware('ADMIN'), async (req, res, next) => {
   }
 });
 
-router.get('/users/count', roleMiddleware('ADMIN'), async (req, res, next) => {
+// Admin-only create user (used by admin UI). Keeps public /register unchanged.
+router.post('/users', roleMiddleware(ADMIN_ROLES), async (req, res, next) => {
+  try {
+    const userData = req.body;
+    console.log('POST /api/users - admin payload:', JSON.stringify(userData));
+    // Attach the admin who creates this user, so we can set createdByUserId for staff if needed
+    userData.createdByUserId = req.user.id;
+    const user = await createUser(userData);
+    res.status(201).json({
+      error: false,
+      message: 'User created successfully by admin',
+      data: user,
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.get('/users/count', roleMiddleware(['SUPER_ADMIN', 'SCHOOL_ADMIN', 'EXECUTIVE']), async (req, res, next) => {
   try {
     const user = await getChart();
     res.status(200).json(user);
@@ -180,7 +203,7 @@ router.get('/users/count', roleMiddleware('ADMIN'), async (req, res, next) => {
   }
 });
 
-router.get('/users/:id', roleMiddleware('ADMIN'), async (req, res, next) => {
+router.get('/users/:id', roleMiddleware(['SUPER_ADMIN', 'SCHOOL_ADMIN', 'EXECUTIVE']), async (req, res, next) => {
   try {
     const userId = req.params.id;
     const user = await getDetailUser(userId);
@@ -193,7 +216,7 @@ router.get('/users/:id', roleMiddleware('ADMIN'), async (req, res, next) => {
   }
 });
 
-router.patch('/users/:id', roleMiddleware('ADMIN'), async (req, res, next) => {
+router.patch('/users/:id', roleMiddleware(['SUPER_ADMIN', 'SCHOOL_ADMIN']), async (req, res, next) => {
   try {
     const userId = req.params.id;
     const userData = req.body;
@@ -208,7 +231,7 @@ router.patch('/users/:id', roleMiddleware('ADMIN'), async (req, res, next) => {
   }
 });
 
-router.delete('/users/:id', roleMiddleware('ADMIN'), async (req, res, next) => {
+router.delete('/users/:id', roleMiddleware(['SUPER_ADMIN', 'SCHOOL_ADMIN']), async (req, res, next) => {
   try {
     const userId = req.params.id;
     await deleteUserById(userId);
@@ -222,3 +245,4 @@ router.delete('/users/:id', roleMiddleware('ADMIN'), async (req, res, next) => {
 });
 
 export default router;
+

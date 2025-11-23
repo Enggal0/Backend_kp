@@ -27,11 +27,16 @@ export const getAllDocuments = async (userId) => {
   return documents;
 };
 
-export const verifDocument = async (id, documentData, userId) => {
+export const verifDocument = async (id, documentData, userId, adminUser) => {
   const user = await findUserById(userId);
 
   if (!user) {
     throw new ResponseError(404, 'User not found');
+  }
+
+  // Restrict SCHOOL_ADMIN to only verify document from their own unit
+  if (adminUser.role === 'SCHOOL_ADMIN' && user.unit_kerja_id !== adminUser.unit_kerja_id) {
+    throw new ResponseError(403, 'Anda hanya dapat memverifikasi pegawai dari unit kerja Anda');
   }
   const documentById = await findDocumentById(id, userId);
 

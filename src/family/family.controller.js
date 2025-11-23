@@ -14,7 +14,7 @@ import { fileUpload, multerErrorHandler } from '../middleware/upload-file-middle
 const router = express.Router();
 
 // admin role
-router.get('/families/:userId', roleMiddleware('ADMIN'), async (req, res, next) => {
+router.get('/families/:userId', roleMiddleware(['SUPER_ADMIN', 'SCHOOL_ADMIN', 'EXECUTIVE']), async (req, res, next) => {
   try {
     const id = req.params.userId;
     const families = await getAllFamilies(id);
@@ -27,7 +27,7 @@ router.get('/families/:userId', roleMiddleware('ADMIN'), async (req, res, next) 
   }
 });
 
-router.get('/families/:userId/:id', roleMiddleware('ADMIN'), async (req, res, next) => {
+router.get('/families/:userId/:id', roleMiddleware(['SUPER_ADMIN', 'SCHOOL_ADMIN', 'EXECUTIVE']), async (req, res, next) => {
   try {
     const id = req.params.userId;
     const famId = req.params.id;
@@ -41,13 +41,15 @@ router.get('/families/:userId/:id', roleMiddleware('ADMIN'), async (req, res, ne
   }
 });
 
-router.patch('/families/:userId/:id', roleMiddleware('ADMIN'), async (req, res, next) => {
+router.patch('/families/:userId/:id', roleMiddleware(['SUPER_ADMIN', 'SCHOOL_ADMIN']), async (req, res, next) => {
   try {
     // const { role } = req.user;
-    const id = req.params.userId;
-    const familyById = req.params.id;
+    const userId = req.params.userId;
+    const familyId = req.params.id;
     const familyData = req.body;
-    const family = await verifFamily(familyById, familyData, id);
+    const adminUser = req.user;
+
+    const family = await verifFamily(familyId, familyData, userId, adminUser);
     res.status(200).json({
       error: false,
       message: 'Verified Success',

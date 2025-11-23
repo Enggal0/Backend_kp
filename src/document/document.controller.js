@@ -15,7 +15,7 @@ const router = express.Router();
 
 // admin role
 
-router.get('/documents/:userId', roleMiddleware('ADMIN'), async (req, res, next) => {
+router.get('/documents/:userId', roleMiddleware(['SUPER_ADMIN', 'SCHOOL_ADMIN', 'EXECUTIVE']), async (req, res, next) => {
   try {
     const { userId } = req.params;
     const documents = await getAllDocuments(userId);
@@ -28,7 +28,7 @@ router.get('/documents/:userId', roleMiddleware('ADMIN'), async (req, res, next)
   }
 });
 
-router.get('/documents/:userId/:id', roleMiddleware('ADMIN'), async (req, res, next) => {
+router.get('/documents/:userId/:id', roleMiddleware(['SUPER_ADMIN', 'SCHOOL_ADMIN', 'EXECUTIVE']), async (req, res, next) => {
   try {
     const { userId } = req.params;
     const documentId = req.params.id;
@@ -42,12 +42,14 @@ router.get('/documents/:userId/:id', roleMiddleware('ADMIN'), async (req, res, n
   }
 });
 
-router.patch('/documents/:userId/:id', roleMiddleware('ADMIN'), async (req, res, next) => {
+router.patch('/documents/:userId/:id', roleMiddleware(['SUPER_ADMIN', 'SCHOOL_ADMIN']), async (req, res, next) => {
   try {
-    const { userId } = req.params;
+    const userId = req.params.userId;
     const documentId = req.params.id;
     const documentData = req.body;
-    const document = await verifDocument(documentId, documentData, userId);
+    const adminUser = req.user;
+
+    const document = await verifDocument(documentId, documentData, userId, adminUser);
     res.status(200).json({
       error: false,
       message: 'Verified Success',

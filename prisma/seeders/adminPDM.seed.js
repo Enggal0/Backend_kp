@@ -54,48 +54,67 @@ import dataAdmin from './DataAdminSekolah.js';
 // };
 
 const generateUsers = async () => {
-  const admins = dataAdmin.map((user) => ({
-    id: user.id,
-    nama: user.nama,
-    nipm: user.nipm,
-    email: user.email,
-    status_kepegawaian: user.status_kepegawaian,
-    password: user.password,
-    role: user.role,
-    unit_kerja_id: user.unit_kerja_id,
-  }));
+  const admins = dataAdmin.map((user) => {
+    let role = 'SCHOOL_ADMIN';
+    // ID PDM Sleman
+    if (user.unit_kerja_id === 'e0283480-eade-41b2-85a4-f54c3813e455') {
+      role = 'SUPER_ADMIN';
+    }
+
+    return {
+      id: user.id,
+      nama: user.nama,
+      nipm: user.nipm,
+      email: user.email,
+      status_kepegawaian: user.status_kepegawaian,
+      password: user.password,
+      role: role,
+      unit_kerja_id: user.unit_kerja_id,
+    };
+  });
   return admins;
 };
 
 const seedAdmins = async () => {
   try {
-    const users = await generateUsers(); // Tunggu hasil generateUsers
-    const userId = users.find((u) => u.id);
-    // Proses user secara paralel
+    const users = await generateUsers();
+    console.log(`  Menambahkan ${users.length} admin akun dari DataAdminSekolah...`);
+    
     await Promise.all(
       users.map(async (user) => {
         try {
+          // Buat user dulu
           await prisma.user.create({
+            data: user,
+          });
+          
+          // Buat profile terpisah
+          await prisma.profile.create({
             data: {
-              ...user,
-              profile: {
-                create: {
-                  id: faker.string.uuid(),
-                  user_id: userId[0], // Gunakan user.id yang valid
-                },
-              },
+              id: faker.string.uuid(),
+              user_id: user.id,
             },
           });
-          console.log(`User "${user.nama}" berhasil ditambahkan.`);
+
+          // Buat staff record untuk admin
+          await prisma.staff.create({
+            data: {
+              user_id: user.id,
+              unit_kerja_id: user.unit_kerja_id,
+              jenis_jabatan: 'ADMIN',
+              status_kepegawaian: user.status_kepegawaian,
+            },
+          });
+          
+          console.log(`  ✓ Admin "${user.nama}" berhasil ditambahkan`);
         } catch (error) {
-          console.error(`Gagal menambahkan user "${user.nama}": ${error.message}`);
+          console.error(`  ✗ Gagal menambahkan admin "${user.nama}": ${error.message}`);
         }
       }),
     );
-
-    console.log('Proses seeding selesai.');
+    console.log(`✓ Total ${users.length} admin akun berhasil ditambahkan`);
   } catch (error) {
-    console.error(`Gagal menjalankan seeding: ${error.message}`);
+    console.error(`✗ Error dalam seedAdmins: ${error.message}`);
   }
 };
 

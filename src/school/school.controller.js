@@ -10,7 +10,7 @@ import { roleMiddleware } from '../middleware/authentication.middleware.js';
 
 const router = express.Router();
 
-router.get('/schools', roleMiddleware(['ADMIN', 'USER']), async (req, res, next) => {
+router.get('/schools', roleMiddleware(['SUPER_ADMIN', 'SCHOOL_ADMIN', 'EXECUTIVE', 'USER']), async (req, res, next) => {
   try {
     const schoolData = {
       nama: req.query.nama,
@@ -24,7 +24,7 @@ router.get('/schools', roleMiddleware(['ADMIN', 'USER']), async (req, res, next)
   }
 });
 
-router.get('/schools/:id', roleMiddleware(['ADMIN', 'USER']), async (req, res, next) => {
+router.get('/schools/:id', roleMiddleware(['SUPER_ADMIN', 'SCHOOL_ADMIN', 'EXECUTIVE', 'USER']), async (req, res, next) => {
   try {
     const schoolId = req.params.id;
     const school = await getSchoolById(schoolId);
@@ -37,7 +37,7 @@ router.get('/schools/:id', roleMiddleware(['ADMIN', 'USER']), async (req, res, n
   }
 });
 
-router.post('/schools', roleMiddleware('ADMIN'), async (req, res, next) => {
+router.post('/schools', roleMiddleware(['SUPER_ADMIN', 'SCHOOL_ADMIN']), async (req, res, next) => {
   try {
     const schoolData = req.body;
     const school = await createSchool(schoolData);
@@ -51,7 +51,7 @@ router.post('/schools', roleMiddleware('ADMIN'), async (req, res, next) => {
   }
 });
 
-router.patch('/schools/:id', roleMiddleware('ADMIN'), async (req, res, next) => {
+router.patch('/schools/:id', roleMiddleware(['SUPER_ADMIN', 'SCHOOL_ADMIN']), async (req, res, next) => {
   try {
     const schoolId = req.params.id;
     const schoolData = req.body;
@@ -66,7 +66,7 @@ router.patch('/schools/:id', roleMiddleware('ADMIN'), async (req, res, next) => 
   }
 });
 
-router.delete('/schools/:id', roleMiddleware('ADMIN'), async (req, res, next) => {
+router.delete('/schools/:id', roleMiddleware(['SUPER_ADMIN']), async (req, res, next) => {
   try {
     const schoolId = req.params.id;
     await deleteSchoolById(schoolId);

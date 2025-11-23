@@ -15,7 +15,7 @@ const router = express.Router();
 
 // admin role
 
-router.get('/educations/:userId', roleMiddleware('ADMIN'), async (req, res, next) => {
+router.get('/educations/:userId', roleMiddleware(['SUPER_ADMIN', 'SCHOOL_ADMIN', 'EXECUTIVE']), async (req, res, next) => {
   try {
     const id = req.params.userId;
     const educations = await getAllEducation(id);
@@ -28,7 +28,7 @@ router.get('/educations/:userId', roleMiddleware('ADMIN'), async (req, res, next
   }
 });
 
-router.get('/educations/:userId/:id', roleMiddleware('ADMIN'), async (req, res, next) => {
+router.get('/educations/:userId/:id', roleMiddleware(['SUPER_ADMIN', 'SCHOOL_ADMIN', 'EXECUTIVE']), async (req, res, next) => {
   try {
     const id = req.params.userId;
     const educationId = req.params.id;
@@ -42,12 +42,14 @@ router.get('/educations/:userId/:id', roleMiddleware('ADMIN'), async (req, res, 
   }
 });
 
-router.patch('/educations/:userId/:id', roleMiddleware('ADMIN'), async (req, res, next) => {
+router.patch('/educations/:userId/:id', roleMiddleware(['SUPER_ADMIN', 'SCHOOL_ADMIN']), async (req, res, next) => {
   try {
-    const id = req.params.userId;
+    const userId = req.params.userId;  // User being reviewed (pegawai)
     const educationId = req.params.id;
     const educationData = req.body;
-    const education = await verifEducation(educationId, educationData, id);
+    const adminUser = req.user;  // Current admin performing verification
+
+    const education = await verifEducation(educationId, educationData, userId, adminUser);
     res.status(200).json({
       error: false,
       message: 'Verified Success',

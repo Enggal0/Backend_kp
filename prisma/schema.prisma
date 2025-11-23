@@ -23,60 +23,68 @@ model School {
   kelurahan      String   @db.VarChar(100)
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
-  user           User[]
   staff          Staff[]
+  users          User[]
 
   @@map("schools")
 }
 
 model User {
-  id                 String             @id @default(uuid())
-  nama               String             @db.VarChar(100)
-  nipm               String             @unique @db.VarChar(18)
-  status_kepegawaian Status_Kepegawaian
-  email              String?            @unique @db.VarChar(100)
-  password           String             @db.VarChar(100)
-  role               Role               @default(USER)
-  token              String?            @db.Text
-  img_url            String?            @db.Text
-  unit_kerja_id      String
-  unit_kerja         School             @relation(fields: [unit_kerja_id], references: [id], onUpdate: Cascade, onDelete: Cascade)
-  createdAt          DateTime           @default(now())
-  updatedAt          DateTime           @updatedAt
-  profile            Profile?
-  positions          Position[]
-  educations         Education[]
-  trainings          Training[]
-  titles             Title[]
-  families           Family[]
-  achievements       Achievement[]
-  documents          Document[]
-  performances       Performance[]
-  staff              Staff[]
+  id        String   @id @default(uuid())
+  nama      String   @db.VarChar(100)
+  nipm      String   @unique @db.VarChar(18)
+  status_kepegawaian Status_Kepegawaian?
+  unit_kerja_id      String?
+  unit_kerja         School?  @relation(fields: [unit_kerja_id], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  email     String?  @unique @db.VarChar(100)
+  password  String   @db.VarChar(100)
+  role      Role     @default(USER)
+  token     String?  @db.Text
+  img_url   String?  @db.Text
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  profile   Profile?
+  staff     Staff?               @relation("UserStaff")
+  createdStaffs Staff[]          @relation("UserCreatedStaff")
+
+  positions    Position[]
+  educations   Education[]
+  trainings    Training[]
+  titles       Title[]
+  families     Family[]
+  achievements Achievement[]
+  documents    Document[]
+  performances Performance[]
 
   @@map("users")
 }
 
+// `Staff` model: stores employment-related data including
+// `tahun_jabatan` (kept here instead of a separate table).
+
 model Staff {
-  id                 String             @id @default(uuid())
-  nama               String             @db.VarChar(100)
-  nipm               String             @unique @db.VarChar(18)
-  status_kepegawaian Status_Kepegawaian
-  email              String?            @unique @db.VarChar(100)
-  img_url            String?            @db.Text
-  unit_kerja_id      String
-  unit_kerja         School             @relation(fields: [unit_kerja_id], references: [id], onUpdate: Cascade, onDelete: Cascade)
-  createdAt          DateTime           @default(now())
-  updatedAt          DateTime           @updatedAt
-  createdByUserId    String
-  createdByUser      User               @relation(fields: [createdByUserId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  id                      String               @id @default(uuid())
+  user_id                 String               @unique
+  user                    User                 @relation("UserStaff", fields: [user_id], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  unit_kerja_id           String
+  unit_kerja              School               @relation(fields: [unit_kerja_id], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  jenis_jabatan           JenisJabatan?        @default(GURU)
+  tahun_jabatan_mulai     DateTime?
+  tahun_jabatan_selesai   DateTime?
+  status_kepegawaian      Status_Kepegawaian?
+  createdByUserId         String?
+  createdByUser           User?                @relation("UserCreatedStaff", fields: [createdByUserId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  createdAt               DateTime             @default(now())
+  updatedAt               DateTime             @updatedAt
 
   @@map("staff")
 }
 
 enum Role {
-  ADMIN @map("admin")
-  USER  @map("user")
+  SUPER_ADMIN  @map("super_admin")
+  SCHOOL_ADMIN @map("school_admin")
+  EXECUTIVE    @map("executive")
+  USER         @map("user")
 }
 
 model Profile {
@@ -154,23 +162,44 @@ model Training {
   @@map("trainings")
 }
 
+enum PositionType {
+  KEPALA_SEKOLAH
+  WAKIL_KEPALA_SEKOLAH
+  BENDAHARA
+  LAINNYA
+}
+
 model Title {
-  id                String   @id @default(uuid())
-  jabatan           String   @db.VarChar(100)
-  unit_kerja        String   @db.VarChar(100)
-  tmt               DateTime @db.Date
-  tanggal_berakhir  DateTime @db.Date
-  no_sk             String   @db.VarChar(100)
-  tanggal_sk        DateTime @db.Date
-  file_url          String   @db.Text
-  status_verifikasi Status   @default(pending)
-  alasan_ditolak    String?  @db.VarChar(100)
+  id                String       @id @default(uuid())
+  type              PositionType @default(LAINNYA)
+  jabatan           String       @db.VarChar(100)
+  unit_kerja        String       @db.VarChar(100)
+  tmt               DateTime     @db.Date
+  tanggal_berakhir  DateTime     @db.Date
+  no_sk             String       @db.VarChar(100)
+  tanggal_sk        DateTime     @db.Date
+  file_url          String       @db.Text
+  status_verifikasi Status       @default(pending)
+  alasan_ditolak    String?      @db.VarChar(100)
   user_id           String
-  user              User     @relation(fields: [user_id], references: [id], onUpdate: Cascade, onDelete: Cascade)
-  createdAt         DateTime @default(now())
-  updatedAt         DateTime @updatedAt
+  user              User         @relation(fields: [user_id], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  createdAt         DateTime     @default(now())
+  updatedAt         DateTime     @updatedAt
+  term              Term?
 
   @@map("titles")
+}
+
+model Term {
+  id         String   @id @default(uuid())
+  start_year Int      @db.Year
+  end_year   Int      @db.Year
+  title_id   String   @unique
+  title      Title    @relation(fields: [title_id], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@map("terms")
 }
 
 model Family {
@@ -311,4 +340,16 @@ enum Status_Kepegawaian {
   Tidak_Tetap @map("Pegawai Tidak Tetap")
   Tetap       @map("Pegawai Tetap")
   Kontrak     @map("Pegawai Kontrak")
+}
+
+// Note: There is no `TahunJabatan` model; masa jabatan kept inside `Staff`.
+
+enum JenisJabatan {
+  KEPALA_SEKOLAH
+  WAKIL_KEPALA_SEKOLAH
+  BENDAHARA
+  GURU
+  STAF
+  ADMIN
+  LAINNYA
 }

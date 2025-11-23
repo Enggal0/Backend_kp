@@ -75,6 +75,7 @@ const getUserById = async (id) => {
     nama: user.nama,
     nipm: user.nipm,
     status_kepegawaian: user.status_kepegawaian,
+    unit_kerja_id: user.unit_kerja_id,
     unit_kerja: {
       nama: user.unit_kerja.nama,
     },
@@ -86,7 +87,7 @@ const getUserById = async (id) => {
 const createUser = async (userData) => {
   const existingUserByUsername = await findUserByNIPM(userData.nipm);
   if (existingUserByUsername) {
-    throw new ResponseError(400, 'NIPM is already exists.');
+    throw new ResponseError(400, 'NIPM sudah terdaftar, silakan gunakan NIPM lain');
   }
   const userValidation = validate(registerValidation, userData);
   const user = await insertUser(userValidation);

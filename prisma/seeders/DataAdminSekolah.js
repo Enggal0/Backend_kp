@@ -8,7 +8,7 @@ const users = [
     nipm: '111111081327342487',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '92e66792-c5cc-43ce-9df5-ad1a2a6f016f',
   },
   {
@@ -18,7 +18,7 @@ const users = [
     nipm: '111111081353655845',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '56d272c9-7de2-457c-8e6f-262723d53e92',
   },
   {
@@ -28,7 +28,7 @@ const users = [
     nipm: '111111108985325129',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: 'e88dfbe8-05ef-4e5f-8650-6f67ab23ff37',
   },
   {
@@ -38,7 +38,7 @@ const users = [
     nipm: '111111087839040734',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: 'b04ca2c8-fde1-4e4b-a8a3-1c71863a2c7a',
   },
   {
@@ -48,7 +48,7 @@ const users = [
     nipm: '111111085859323958',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: 'a1840933-e275-430e-a694-0c29d2db0b96',
   },
   {
@@ -58,7 +58,7 @@ const users = [
     nipm: '111111082234890684',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '6d606007-fa8a-49df-9ffd-260f79a5dd83',
   },
   {
@@ -68,7 +68,7 @@ const users = [
     nipm: '111111081225505343',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '4ae58beb-fbfa-4a9b-a36a-0d9734e0459e',
   },
   {
@@ -78,7 +78,7 @@ const users = [
     nipm: '111111085328122772',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: 'd1f74e0d-ab8a-4252-aa58-438de6aab82b',
   },
   {
@@ -88,7 +88,7 @@ const users = [
     nipm: '111111085729352237',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: 'd9a2df06-4095-48a4-b7fa-622c4e27ef81',
   },
   {
@@ -98,7 +98,7 @@ const users = [
     nipm: '111111108112675931',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '9deaa262-12fa-4ec1-b358-22195bc11fb0',
   },
   {
@@ -108,7 +108,7 @@ const users = [
     nipm: '111111108991715606',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '5591a9f6-945d-4e8e-96d4-0ff8f5234a9e',
   },
   {
@@ -118,7 +118,7 @@ const users = [
     nipm: '111110895335673735',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '263360d8-5e68-419c-9132-5a5847746475',
   },
   {
@@ -128,7 +128,7 @@ const users = [
     nipm: '111111089677347555',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '41b2a817-f4f7-47ff-ad22-41758f0fa209',
   },
   {
@@ -138,7 +138,7 @@ const users = [
     nipm: '111111085869290336',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: 'ab355700-d5a7-4e80-9096-58e13acfe60a',
   },
   {
@@ -148,7 +148,7 @@ const users = [
     nipm: '111111085868762386',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: 'c575b69f-5e30-4063-b725-ae8900c54a23',
   },
   {
@@ -158,7 +158,7 @@ const users = [
     nipm: '111111082134321075',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '2efb1761-5ed9-4afe-99e1-bb07d3f5e69a',
   },
   {
@@ -168,7 +168,7 @@ const users = [
     nipm: '111111082232439855',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '38a8ac15-28b9-4c4f-a53b-5a528d27b540',
   },
   {
@@ -178,7 +178,7 @@ const users = [
     nipm: '111111110817267776',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '8aba7517-7290-4b51-a0a6-d4021a3dca0e',
   },
   {
@@ -188,7 +188,7 @@ const users = [
     nipm: '111111089630566770',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '57fc0afa-7b75-4b43-ae22-24069f9b491d',
   },
   {
@@ -198,7 +198,7 @@ const users = [
     nipm: '111111108986027272',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: 'a3faeb62-178c-4696-9471-f80aa80e43e7',
   },
   {
@@ -208,7 +208,7 @@ const users = [
     nipm: '111110895364333100',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '2b32879d-9ade-42b6-a106-d0a8603aaf71',
   },
   {
@@ -218,7 +218,7 @@ const users = [
     nipm: '111111085879852596',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '5fd5c137-4c0a-4b61-9d30-6566beccec97',
   },
   {
@@ -228,7 +228,7 @@ const users = [
     nipm: '111111085643892030',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: 'b9191e7c-e55d-4ae7-afa2-015a4d5a306a',
   },
   {
@@ -238,7 +238,7 @@ const users = [
     nipm: '111111089602392658',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: 'c4123cd5-a4e1-41ad-8e5d-69be56a0b5e7',
   },
   {
@@ -248,7 +248,7 @@ const users = [
     nipm: '111111081227198704',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: 'ec85f2cd-b37f-443b-bdc2-9ac9986fb26f',
   },
   {
@@ -258,7 +258,7 @@ const users = [
     nipm: '111111085643777778',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '43d7ff0c-fdb7-44e3-a781-2a03c3f6663d',
   },
   {
@@ -268,7 +268,7 @@ const users = [
     nipm: '111111085802652065',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: 'c6c7c9d6-3e84-42bb-ab7e-c2169ec6793f',
   },
   {
@@ -278,7 +278,7 @@ const users = [
     nipm: '111110895704342803',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: 'e4b6ac1f-8dd3-4d03-b8e8-514239570d38',
   },
   {
@@ -288,7 +288,7 @@ const users = [
     nipm: '111111081804114477',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: 'd2d45c01-e42c-4047-aee4-468c4ed18f01',
   },
   {
@@ -298,7 +298,7 @@ const users = [
     nipm: '111110895411148545',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '05f3efed-dd36-4f78-b2da-42cb37d7b12c',
   },
   {
@@ -308,7 +308,7 @@ const users = [
     nipm: '111111085799923865',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: 'b2719990-e301-48bf-be52-df358d1a64b5',
   },
   {
@@ -318,7 +318,7 @@ const users = [
     nipm: '111111082243676448',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: 'd0efd57f-17e9-4e45-b64e-24f8588d0e4a',
   },
   {
@@ -328,7 +328,7 @@ const users = [
     nipm: '111111081805899523',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '2c07805f-932e-4912-b0e7-4a8348929679',
   },
   {
@@ -338,7 +338,7 @@ const users = [
     nipm: '111111085786552227',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: 'fb043c82-cf39-4536-bc3a-376465bc8065',
   },
   {
@@ -348,7 +348,7 @@ const users = [
     nipm: '111111081326829215',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '0d752df9-d2de-45fe-bda2-a6d076c2c8c3',
   },
   {
@@ -358,7 +358,7 @@ const users = [
     nipm: '111111081328580234',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: 'be9bd302-0a3d-4a31-8a78-219adc8247ec',
   },
   {
@@ -368,7 +368,7 @@ const users = [
     nipm: '111111087775536699',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '7cd7cd31-7867-4130-a01c-480ec7139164',
   },
   {
@@ -378,7 +378,7 @@ const users = [
     nipm: '111111085101924387',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '1f5768a6-f59c-4795-846f-2e75380b62fa',
   },
   {
@@ -388,7 +388,7 @@ const users = [
     nipm: '111111085602470703',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: 'bc3f5d71-1baf-41c4-bc42-9e8f1ee2ea7c',
   },
   {
@@ -398,7 +398,7 @@ const users = [
     nipm: '111111081524034705',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '85bf07a1-9c74-4b00-89f8-e1037a65ec6b',
   },
   {
@@ -408,7 +408,7 @@ const users = [
     nipm: '111111085701442646',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '0f14ad58-6632-454b-b636-26af3ad6f0fc',
   },
   {
@@ -418,7 +418,7 @@ const users = [
     nipm: '111111081804110593',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '455c9739-a3cf-4b05-b67f-1f88e750cb94',
   },
   {
@@ -428,7 +428,7 @@ const users = [
     nipm: '111111085287383220',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: 'ab02001b-8d89-44ff-9358-f6777f153c74',
   },
   {
@@ -438,7 +438,7 @@ const users = [
     nipm: '111111108816738860',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '21bac373-42d9-460c-a51f-950497847b71',
   },
   {
@@ -448,7 +448,7 @@ const users = [
     nipm: '111111110818100692',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '6faa5516-716f-4f36-ad59-d059c54ff4a3',
   },
   {
@@ -458,7 +458,7 @@ const users = [
     nipm: '111111083840545105',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: 'e6dcf7a8-2ee3-4655-b17f-2302e05828c5',
   },
   {
@@ -468,7 +468,7 @@ const users = [
     nipm: '111111081393616692',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: 'a7db9ecb-79ff-417c-aaf8-32c3b5c383d1',
   },
   {
@@ -478,7 +478,7 @@ const users = [
     nipm: '111111081807375752',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '3ad3b9cf-00de-452b-8f08-6bb6877a5d04',
   },
   {
@@ -488,7 +488,7 @@ const users = [
     nipm: '111110895368312211',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: 'a82e30c2-31a6-41ee-9e56-b37d137d1d2c',
   },
   {
@@ -498,7 +498,7 @@ const users = [
     nipm: '111111089526446090',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: 'dc2f74c1-2173-4f40-9711-d58e0caf383b',
   },
   {
@@ -508,7 +508,7 @@ const users = [
     nipm: '111111108583302215',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: 'b3d6e32a-f879-4d59-85d4-513d95340d2f',
   },
   {
@@ -518,7 +518,7 @@ const users = [
     nipm: '111111087838465103',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: 'fb3fbbe6-ae9b-49a0-8894-def25cecc7cb',
   },
   {
@@ -528,7 +528,7 @@ const users = [
     nipm: '111111082220799500',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '36b973b9-3951-427b-ad5d-0b0077a0158d',
   },
   {
@@ -538,7 +538,7 @@ const users = [
     nipm: '111111082335502887',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '6fe941f1-5647-4e7a-af95-d975355237a9',
   },
   {
@@ -548,7 +548,7 @@ const users = [
     nipm: '111111085336552188',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: 'dd4762ab-0daa-4211-af1c-43df37b7949e',
   },
   {
@@ -558,7 +558,7 @@ const users = [
     nipm: '111111085816624325',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '82f4e31f-6c71-45d0-b938-0b80eb556d94',
   },
   {
@@ -568,7 +568,7 @@ const users = [
     nipm: '111111087722349181',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: 'bd9b370a-e84d-4779-b3a2-59fb65ac8785',
   },
   {
@@ -578,7 +578,7 @@ const users = [
     nipm: '111111083105395619',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '903da701-7ee9-4351-850e-37d4d53e8fb6',
   },
   {
@@ -588,7 +588,7 @@ const users = [
     nipm: '111111087838570098',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '4ea8e287-2c0e-41da-85bc-c01f5182226a',
   },
   {
@@ -598,7 +598,7 @@ const users = [
     nipm: '111111085876076980',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '617c2693-b779-466e-9cb2-56161002164f',
   },
   {
@@ -608,7 +608,7 @@ const users = [
     nipm: '111111087848886953',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '5599b1fd-fed5-496b-92c7-01f965049b7e',
   },
   {
@@ -618,7 +618,7 @@ const users = [
     nipm: '111111085870330051',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: 'c2c0ca0b-be72-4d30-85bd-043a2ac00b53',
   },
   {
@@ -628,7 +628,7 @@ const users = [
     nipm: '111111082352154223',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '5e7bb218-268f-42e6-9e53-5ee27f419795',
   },
   {
@@ -638,7 +638,7 @@ const users = [
     nipm: '111111085743316040',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: 'cc14bfd4-341b-4b3b-815c-d879c362aa54',
   },
   {
@@ -648,7 +648,7 @@ const users = [
     nipm: '111111089626393822',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: 'c1653764-cb96-41f3-981a-3e80c864b6a1',
   },
   {
@@ -658,7 +658,7 @@ const users = [
     nipm: '111111083840841683',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: 'b58be0e4-5e8a-468c-ade6-4f8266ef615b',
   },
   {
@@ -668,7 +668,7 @@ const users = [
     nipm: '111111087741241571',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '4613e158-2755-478e-905d-79c4411f2d7a',
   },
   {
@@ -678,7 +678,7 @@ const users = [
     nipm: '111111087817062844',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '3ba0559d-a99e-4044-b499-0840353f25d9',
   },
   {
@@ -688,7 +688,7 @@ const users = [
     nipm: '111110895422871708',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '8181957c-2eb2-4f8c-9b60-3a6227457ae7',
   },
   {
@@ -698,7 +698,7 @@ const users = [
     nipm: '111111081291169435',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '9b2fcb00-949b-47d9-a88f-d84a9127c6be',
   },
   {
@@ -708,7 +708,7 @@ const users = [
     nipm: '111111081919911969',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: 'e80c89e5-bf85-48e7-b1af-8e6f6983d639',
   },
   {
@@ -718,7 +718,7 @@ const users = [
     nipm: '111111085601010025',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '20d5e50b-5f1c-42fa-b5c3-8a779f00b0ef',
   },
   {
@@ -728,7 +728,7 @@ const users = [
     nipm: '111111081216249450',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '3f164efa-008d-486d-9a5d-ae1e093905ad',
   },
   {
@@ -738,7 +738,7 @@ const users = [
     nipm: '111111082324973113',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '480d9afa-8a9a-4cc9-8c6d-969de5000721',
   },
   {
@@ -748,7 +748,7 @@ const users = [
     nipm: '111111085101614028',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: 'f143c7ea-8a53-4b69-aa1c-63ce83b2e88f',
   },
   {
@@ -758,7 +758,7 @@ const users = [
     nipm: '111111083822752428',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: 'b525e645-e0a0-477a-b38c-b62f118da0fd',
   },
   {
@@ -768,7 +768,7 @@ const users = [
     nipm: '111111108989724907',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '8bb39288-95f9-4789-b364-a57ba2f9e5f1',
   },
   {
@@ -778,7 +778,7 @@ const users = [
     nipm: '111111087838831983',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: 'd5e866a6-c270-43fb-9e7e-1989b0ca83f0',
   },
   {
@@ -788,7 +788,7 @@ const users = [
     nipm: '333333333308122757',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '419abfd0-ff11-402b-88c0-5eddc9b5050c',
   },
   {
@@ -798,7 +798,7 @@ const users = [
     nipm: '333333081329916356',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: 'c05a32fc-c37b-4ca3-a1bb-6a1894280876',
   },
   {
@@ -808,7 +808,7 @@ const users = [
     nipm: '333333085743060081',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '4f4f7e8b-c8ad-4ad4-b492-34ab26470a25',
   },
   {
@@ -818,7 +818,7 @@ const users = [
     nipm: '333333308985162510',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: 'd9ab78e8-2572-47c0-8682-bcc6e7f47b10',
   },
   {
@@ -828,7 +828,7 @@ const users = [
     nipm: '333333085893115076',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: 'b28bc569-9197-4ba7-acf2-5e7efe026794',
   },
   {
@@ -838,7 +838,7 @@ const users = [
     nipm: '333333085643175247',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '8470929e-e2bc-4190-b5db-7d31e6c90403',
   },
   {
@@ -848,7 +848,7 @@ const users = [
     nipm: '333333085326447472',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: 'fe6c3f50-bd3a-4ba7-8f6e-f1c48d01292a',
   },
   {
@@ -858,7 +858,7 @@ const users = [
     nipm: '333333085975266121',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '866cd8ee-2d4f-4140-a0b0-e85c1b3a9ba5',
   },
   {
@@ -868,7 +868,7 @@ const users = [
     nipm: '333333085769152942',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: 'c3a23e1d-1b43-4473-b412-2d7c8401b298',
   },
   {
@@ -878,7 +878,7 @@ const users = [
     nipm: '333333087738164082',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: 'bc8fd894-303d-45ee-abe3-29220b2d50bc',
   },
   {
@@ -888,7 +888,7 @@ const users = [
     nipm: '333333081804368679',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: 'ef25dc93-279a-4473-b020-82dd3d393f4a',
   },
   {
@@ -898,7 +898,7 @@ const users = [
     nipm: '333333087838687065',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '510b0c62-3467-4c6d-a04b-00399f00972c',
   },
   {
@@ -908,7 +908,7 @@ const users = [
     nipm: '333333308112504084',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '800558f5-6060-4373-bb63-8d8d029c7cab',
   },
   {
@@ -918,7 +918,7 @@ const users = [
     nipm: '333333083869699091',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: 'b49a934b-c2ca-4d97-b8d1-313cb74e6437',
   },
   {
@@ -928,7 +928,7 @@ const users = [
     nipm: '333333081345696708',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '8f967c71-cbd0-4708-b515-9b2b58dd810c',
   },
   {
@@ -938,7 +938,7 @@ const users = [
     nipm: '333333089519917258',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: 'f228442f-3fd6-4fa9-a4a9-d50d7d097613',
   },
   {
@@ -948,7 +948,7 @@ const users = [
     nipm: '333333083867028603',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '598895c4-bb56-47b7-8250-065ef2b13d07',
   },
   {
@@ -958,7 +958,7 @@ const users = [
     nipm: '333333081233778884',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '5f217a72-f1da-4c81-8f5e-d25c314e854d',
   },
   {
@@ -968,7 +968,7 @@ const users = [
     nipm: '333333081802723266',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: 'e88b0332-6a5e-4076-9c50-b521c20ebd1c',
   },
   {
@@ -978,7 +978,7 @@ const users = [
     nipm: '333333085643877347',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: 'f2348390-0c98-434c-9097-bee83affbf94',
   },
   {
@@ -988,7 +988,7 @@ const users = [
     nipm: '333333085713518487',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '1e30b351-59c6-40df-8c11-7b8e313761eb',
   },
   {
@@ -998,7 +998,7 @@ const users = [
     nipm: '333333308122967621',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '1c0476d3-a766-47ad-980c-fcea63476761',
   },
   {
@@ -1008,7 +1008,7 @@ const users = [
     nipm: '333333085729363991',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: 'e0a400b2-3bc5-44de-9d5b-812b8246010b',
   },
   {
@@ -1018,7 +1018,7 @@ const users = [
     nipm: '222222085865634446',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '0b316e62-c771-4b98-8cca-f7370632cf32',
   },
   {
@@ -1028,7 +1028,7 @@ const users = [
     nipm: '222222208994533667',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: 'ee3c2b2a-7e7b-4008-b92a-5cb057dcb829',
   },
   {
@@ -1038,7 +1038,7 @@ const users = [
     nipm: '222222085643299745',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: 'e117d350-d3ce-40a2-a736-0094d264d237',
   },
   {
@@ -1048,7 +1048,7 @@ const users = [
     nipm: '222220895344233506',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '8d326f37-9357-42fc-bc75-c71d93a40869',
   },
   {
@@ -1058,7 +1058,7 @@ const users = [
     nipm: '222222089699047365',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '214abf7c-218b-471c-a325-373f370a8198',
   },
   {
@@ -1068,7 +1068,7 @@ const users = [
     nipm: '222222089626831159',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '9d329e28-893c-45d5-a861-5dfce04f85fa',
   },
   {
@@ -1078,7 +1078,7 @@ const users = [
     nipm: '222222085729892522',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '43ed4a6b-570f-4906-818d-dc3bcab244a8',
   },
   {
@@ -1088,7 +1088,7 @@ const users = [
     nipm: '222222081935433735',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '0cd19d7c-121f-4e1b-9e93-ebc235c52a0d',
   },
   {
@@ -1098,7 +1098,7 @@ const users = [
     nipm: '222222085292710113',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '70d0bfb1-73b5-4601-a5e3-9fe2a1426e68',
   },
   {
@@ -1108,7 +1108,7 @@ const users = [
     nipm: '222222085743221003',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '922d21fe-dd70-4d93-97e7-28dbcab8e3ee',
   },
   {
@@ -1118,7 +1118,7 @@ const users = [
     nipm: '222222088216288316',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '807a3c26-128b-495a-bafb-572c3431e420',
   },
   {
@@ -1128,7 +1128,7 @@ const users = [
     nipm: '222222082135430522',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: 'a1e5b055-927c-4398-a802-77416fbb72fd',
   },
   {
@@ -1138,7 +1138,7 @@ const users = [
     nipm: '222222082133074237',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '3a175c6d-daa9-4218-8b00-81e85fab7f53',
   },
   {
@@ -1148,7 +1148,7 @@ const users = [
     nipm: '222220895386256392',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '99d5ff6d-3ee2-491e-8521-9fd5e7f55225',
   },
   {
@@ -1158,7 +1158,7 @@ const users = [
     nipm: '222222089646554814',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: 'c4939b38-96c2-46da-826a-c6b95c476474',
   },
   {
@@ -1168,7 +1168,7 @@ const users = [
     nipm: '222222085600070199',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '15757a93-bb2a-48e7-b5cd-42770e81905d',
   },
   {
@@ -1178,7 +1178,7 @@ const users = [
     nipm: '222222082136336596',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '713e085b-9db2-4ec2-9ebc-3f54125e8d4c',
   },
   {
@@ -1188,7 +1188,7 @@ const users = [
     nipm: '222222081931767265',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: 'b1a2b776-efa8-4c62-b4eb-90459255e48a',
   },
   {
@@ -1198,7 +1198,7 @@ const users = [
     nipm: '222222085288016743',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '7283a6eb-d754-45d0-a34c-947cf70a8a6b',
   },
   {
@@ -1208,7 +1208,7 @@ const users = [
     nipm: '222222081328647517',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: 'e3bbb1aa-37ef-486b-932b-e1de70591d87',
   },
   {
@@ -1218,7 +1218,7 @@ const users = [
     nipm: '222222081915525431',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '20c1e2a5-88d5-46f1-b899-3a7490dc1ce6',
   },
   {
@@ -1228,7 +1228,7 @@ const users = [
     nipm: '222222087816033133',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '0a7110bb-955a-4c75-b7a3-fb822b093683',
   },
   {
@@ -1238,7 +1238,7 @@ const users = [
     nipm: '222222085868550793',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: 'a9fd039f-197c-431f-a5e8-edd13cbb7f1f',
   },
   {
@@ -1248,7 +1248,7 @@ const users = [
     nipm: '222222085743468106',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: 'ef5852fb-c7ca-4d2f-9b99-8bde49d8f07d',
   },
   {
@@ -1258,7 +1258,7 @@ const users = [
     nipm: '222222088225274219',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SCHOOL_ADMIN',
     unit_kerja_id: '83c5f875-f721-4a03-90d4-6ca09ee837fc',
   },
   {
@@ -1268,7 +1268,7 @@ const users = [
     nipm: '000001231234567891',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SUPER_ADMIN',
     unit_kerja_id: 'e0283480-eade-41b2-85a4-f54c3813e455',
   },
   {
@@ -1278,7 +1278,7 @@ const users = [
     nipm: '000002135674246578',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SUPER_ADMIN',
     unit_kerja_id: 'e0283480-eade-41b2-85a4-f54c3813e455',
   },
   {
@@ -1288,7 +1288,7 @@ const users = [
     nipm: '000003457328475431',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SUPER_ADMIN',
     unit_kerja_id: 'e0283480-eade-41b2-85a4-f54c3813e455',
   },
   {
@@ -1298,9 +1298,10 @@ const users = [
     nipm: '000004536468993823',
     password: bcrypt.hashSync('ABcd123!', 10),
     status_kepegawaian: 'Tetap',
-    role: 'ADMIN',
+    role: 'SUPER_ADMIN',
     unit_kerja_id: 'e0283480-eade-41b2-85a4-f54c3813e455',
   },
 ];
 
 export default users;
+

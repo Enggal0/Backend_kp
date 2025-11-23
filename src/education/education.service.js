@@ -31,12 +31,18 @@ export const getAllEducation = async (userId) => {
   return educations;
 };
 
-export const verifEducation = async (id, educationData, userId) => {
+export const verifEducation = async (id, educationData, userId, adminUser) => {
   const user = await findUserById(userId);
 
   if (!user) {
     throw new ResponseError(404, 'User not found');
   }
+
+  // Restrict SCHOOL_ADMIN to only verify education from their own unit
+  if (adminUser.role === 'SCHOOL_ADMIN' && user.unit_kerja_id !== adminUser.unit_kerja_id) {
+    throw new ResponseError(403, 'Anda hanya dapat memverifikasi pegawai dari unit kerja Anda');
+  }
+
   const educationById = await findEducationById(id, userId);
 
   if (!educationById) {

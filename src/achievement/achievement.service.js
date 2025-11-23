@@ -32,11 +32,16 @@ export const getAllAchievements = async (userId) => {
   return achievements;
 };
 
-export const verifAchievement = async (id, achievementData, userId) => {
+export const verifAchievement = async (id, achievementData, userId, adminUser) => {
   const user = await findUserById(userId);
 
   if (!user) {
     throw new ResponseError(404, 'User not found');
+  }
+
+  // Restrict SCHOOL_ADMIN to only verify achievement from their own unit
+  if (adminUser.role === 'SCHOOL_ADMIN' && user.unit_kerja_id !== adminUser.unit_kerja_id) {
+    throw new ResponseError(403, 'Anda hanya dapat memverifikasi pegawai dari unit kerja Anda');
   }
   const achievementById = await findAchievementById(id, userId);
 

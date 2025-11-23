@@ -15,7 +15,7 @@ const router = express.Router();
 
 // admin role
 
-router.get('/positions/:userId', roleMiddleware('ADMIN'), async (req, res, next) => {
+router.get('/positions/:userId', roleMiddleware(['SUPER_ADMIN', 'SCHOOL_ADMIN', 'EXECUTIVE']), async (req, res, next) => {
   try {
     const id = req.params.userId;
     const positions = await getAllPositions(id);
@@ -29,7 +29,7 @@ router.get('/positions/:userId', roleMiddleware('ADMIN'), async (req, res, next)
   }
 });
 
-router.get('/positions/:userId/:id', roleMiddleware('ADMIN'), async (req, res, next) => {
+router.get('/positions/:userId/:id', roleMiddleware(['SUPER_ADMIN', 'SCHOOL_ADMIN', 'EXECUTIVE']), async (req, res, next) => {
   try {
     const id = req.params.userId;
     const positionId = req.params.id;
@@ -44,12 +44,14 @@ router.get('/positions/:userId/:id', roleMiddleware('ADMIN'), async (req, res, n
   }
 });
 
-router.patch('/positions/:userId/:id', roleMiddleware('ADMIN'), async (req, res, next) => {
+router.patch('/positions/:userId/:id', roleMiddleware(['SUPER_ADMIN', 'SCHOOL_ADMIN']), async (req, res, next) => {
   try {
-    const id = req.params.userId;
-    const positionById = req.params.id;
+    const userId = req.params.userId;
+    const positionId = req.params.id;
     const positionData = req.body;
-    const position = await verifPosition(positionById, positionData, id);
+    const adminUser = req.user;
+
+    const positions = await verifPosition(positionId, positionData, userId, adminUser);
     res.status(200).json({
       error: false,
       message: 'Verified Success',

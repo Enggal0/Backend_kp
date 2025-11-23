@@ -14,7 +14,7 @@ import { fileUpload, multerErrorHandler } from '../middleware/upload-file-middle
 const router = express.Router();
 
 // admin role
-router.get('/achievements/:userId', roleMiddleware('ADMIN'), async (req, res, next) => {
+router.get('/achievements/:userId', roleMiddleware(['SUPER_ADMIN', 'SCHOOL_ADMIN', 'EXECUTIVE']), async (req, res, next) => {
   try {
     const id = req.params.userId;
     const achievements = await getAllAchievements(id);
@@ -26,7 +26,7 @@ router.get('/achievements/:userId', roleMiddleware('ADMIN'), async (req, res, ne
     next(error);
   }
 });
-router.get('/achievements/:userId/:id', roleMiddleware('ADMIN'), async (req, res, next) => {
+router.get('/achievements/:userId/:id', roleMiddleware(['SUPER_ADMIN', 'SCHOOL_ADMIN', 'EXECUTIVE']), async (req, res, next) => {
   try {
     const id = req.params.userId;
     const achievementId = req.params.id;
@@ -40,12 +40,14 @@ router.get('/achievements/:userId/:id', roleMiddleware('ADMIN'), async (req, res
   }
 });
 
-router.patch('/achievements/:userId/:id', roleMiddleware('ADMIN'), async (req, res, next) => {
+router.patch('/achievements/:userId/:id', roleMiddleware(['SUPER_ADMIN', 'SCHOOL_ADMIN']), async (req, res, next) => {
   try {
-    const id = req.params.userId;
+    const userId = req.params.userId;
     const achievementId = req.params.id;
     const achievementData = req.body;
-    const achievement = await verifAchievement(achievementId, achievementData, id);
+    const adminUser = req.user;
+
+    const achievements = await verifAchievement(achievementId, achievementData, userId, adminUser);
     res.status(200).json({
       error: false,
       message: 'Verified Success',

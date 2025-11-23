@@ -58,11 +58,16 @@ export const getPositionById = async (id, userId) => {
   };
 };
 
-export const verifPosition = async (id, positionData, userId) => {
+export const verifPosition = async (id, positionData, userId, adminUser) => {
   const user = await findUserById(userId);
 
   if (!user) {
     throw new ResponseError(404, 'User not found');
+  }
+
+  // Restrict SCHOOL_ADMIN to only verify position from their own unit
+  if (adminUser.role === 'SCHOOL_ADMIN' && user.unit_kerja_id !== adminUser.unit_kerja_id) {
+    throw new ResponseError(403, 'Anda hanya dapat memverifikasi pegawai dari unit kerja Anda');
   }
   const positionById = await findPositionById(id, userId);
 

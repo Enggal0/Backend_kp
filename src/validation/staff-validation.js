@@ -8,6 +8,10 @@ const createStaffValidation = Joi.object({
   status_kepegawaian: Joi.string().valid('Tetap', 'Kontrak', 'Tidak_Tetap').required(),
   email: Joi.string().email().optional().allow(null, ''),
   img_url: Joi.string().optional().allow(null, ''),
+  unit_kerja_id: Joi.string().optional().allow(null, ''),
+  jenis_jabatan: Joi.string().valid('KEPALA_SEKOLAH','WAKIL_KEPALA_SEKOLAH','BENDAHARA','GURU','STAF','ADMIN','LAINNYA').optional(),
+  tahun_jabatan_mulai: Joi.date().optional(),
+  tahun_jabatan_selesai: Joi.date().optional(),
 });
 
 const updateStaffValidation = Joi.object({

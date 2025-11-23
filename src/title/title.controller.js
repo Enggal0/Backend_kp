@@ -15,7 +15,7 @@ const router = express.Router();
 
 // admin role
 
-router.get('/titles/:userId', roleMiddleware('ADMIN'), async (req, res, next) => {
+router.get('/titles/:userId', roleMiddleware(['SUPER_ADMIN', 'SCHOOL_ADMIN', 'EXECUTIVE']), async (req, res, next) => {
   try {
     const id = req.params.userId;
     const titles = await getAllTitles(id);
@@ -29,7 +29,7 @@ router.get('/titles/:userId', roleMiddleware('ADMIN'), async (req, res, next) =>
   }
 });
 
-router.get('/titles/:userId/:id', roleMiddleware('ADMIN'), async (req, res, next) => {
+router.get('/titles/:userId/:id', roleMiddleware(['SUPER_ADMIN', 'SCHOOL_ADMIN', 'EXECUTIVE']), async (req, res, next) => {
   try {
     const id = req.params.userId;
     const titleId = req.params.id;
@@ -44,12 +44,14 @@ router.get('/titles/:userId/:id', roleMiddleware('ADMIN'), async (req, res, next
   }
 });
 
-router.patch('/titles/:userId/:id', roleMiddleware('ADMIN'), async (req, res, next) => {
+router.patch('/titles/:userId/:id', roleMiddleware(['SUPER_ADMIN', 'SCHOOL_ADMIN']), async (req, res, next) => {
   try {
-    const id = req.params.userId;
-    const titleById = req.params.id;
+    const userId = req.params.userId;
+    const titleId = req.params.id;
     const titleData = req.body;
-    const title = await verifTitle(titleById, titleData, id);
+    const adminUser = req.user;
+
+    const titles = await verifTitle(titleId, titleData, userId, adminUser);
     res.status(200).json({
       error: false,
       message: 'Verified Success',

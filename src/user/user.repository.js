@@ -8,6 +8,13 @@ const findAllUsers = async (userData) => {
 
   const filters = [];
 
+  // If user is SCHOOL_ADMIN, filter by their unit_kerja_id
+  if (userData.userRole === 'SCHOOL_ADMIN' && userData.userUnitKerjaId) {
+    filters.push({
+      unit_kerja_id: userData.userUnitKerjaId,
+    });
+  }
+
   if (userData.nama) {
     filters.push({
       nama: {
@@ -68,6 +75,7 @@ const findAllUsers = async (userData) => {
       nama: true,
       nipm: true,
       status_kepegawaian: true,
+      unit_kerja_id: true,
       unit_kerja: {
         select: {
           nama: true,
@@ -258,6 +266,7 @@ const findDetailUserById = async (id) => {
       email: true,
       status_kepegawaian: true,
       img_url: true,
+      unit_kerja_id: true,
       unit_kerja: {
         select: {
           nama: true,
@@ -280,6 +289,15 @@ const findDetailUserById = async (id) => {
         take: 1,
         orderBy: {
           tmt: 'desc',
+        },
+      },
+      staff: {
+        select: {
+          jenis_jabatan: true,
+          tahun_jabatan_mulai: true,
+          tahun_jabatan_selesai: true,
+          status_kepegawaian: true,
+          unit_kerja_id: true,
         },
       },
     },
@@ -308,10 +326,9 @@ const insertUser = async (userData) => {
       unit_kerja_id: userData.unit_kerja_id,
       img_url: userData.img_url,
       profile: {
-        create: {
-          user_id: userData.id,
-        },
+        create: {},
       },
+      // Staff-related fields are handled in `Staff` model
     },
     select: {
       id: true,
@@ -333,6 +350,28 @@ const insertUser = async (userData) => {
     },
   });
 
+  // If jenis_jabatan was provided by admin creation, set staff-related fields on the User
+  try {
+    if (userData.jenis_jabatan && userData.createdByUserId) {
+      // Create a Staff row linked to this user instead of setting fields on User
+      const staffPayload = {
+        user_id: user.id,
+        unit_kerja_id: userData.unit_kerja_id,
+        jenis_jabatan: userData.jenis_jabatan,
+        status_kepegawaian: userData.status_kepegawaian,
+        createdByUserId: userData.createdByUserId,
+        tahun_jabatan_mulai: userData.tahun_jabatan_mulai || null,
+        tahun_jabatan_selesai: userData.tahun_jabatan_selesai || null,
+      };
+      // debug log the staff payload
+      console.log('Creating staff for user:', user.id, JSON.stringify(staffPayload));
+      await prisma.staff.create({ data: staffPayload });
+    }
+  } catch (err) {
+    // Log error but don't fail the whole user creation
+    console.error('Failed to set staff-related fields for new user:', err.message, err.stack);
+  }
+
   return user;
 };
 
@@ -348,6 +387,12 @@ const findUserCurrent = async (id) => {
       email: true,
       role: true,
       img_url: true,
+      unit_kerja_id: true,
+      unit_kerja: {
+        select: {
+          nama: true,
+        },
+      },
       profile: {
         select: {
           gelar_depan: true,
